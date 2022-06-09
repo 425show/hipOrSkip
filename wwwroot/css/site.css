@@ -1,0 +1,57 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.counter-box {
+    display: block;
+    background: #f6f6f6;
+    padding: 20px 10px 18px;
+    text-align: center
+}
+
+    .counter-box p {
+        margin: 5px 0 0;
+        padding: 0;
+        color: #909090;
+        font-size: 12px;
+        font-weight: 500
+    }
+
+    .counter-box i {
+        font-size: 40px;
+        /*margin: 0 0 15px;*/
+        color: #d2d2d2
+    }
+
+.counter {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    color: #666;
+    line-height: 28px
+}
+
+.counter-box.colored {
+    background: #3acf87;
+}
+
+    .counter-box.colored p,
+    .counter-box.colored i,
+    .counter-box.colored .counter {
+        color: #fff
+    }
