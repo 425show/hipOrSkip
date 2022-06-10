@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace HipOrSkip.Pages;
 
-public class PrivacyModel : PageModel
+public class QuestionModel : PageModel
 {
-    private readonly ILogger<PrivacyModel> _logger;
+    private readonly ILogger<QuestionModel> _logger;
 
-    public PrivacyModel(ILogger<PrivacyModel> logger)
+    public QuestionModel(ILogger<QuestionModel> logger)
     {
         _logger = logger;
     }

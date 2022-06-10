@@ -24,8 +24,7 @@ connection.on("VoteUpdated", function (message) {
 
 connection.on("QuestionUpdated", function (question) {
     document.getElementById("question").innerHTML = question;
-    hipVoteCount = 0;
-    skipVoteCount = 0;
+    resetCounters();
 });
 
 connection.start().then(function () {
@@ -48,3 +47,11 @@ document.getElementById("skipVoteBtn").addEventListener("click", function (event
     });
     event.preventDefault();
 });
+
+function resetCounters() {
+    hipVoteCount = 0;
+    skipVoteCount = 0;
+    document.getElementById("hipVoteCount").innerHTML = hipVoteCount;
+    document.getElementById("skipVoteCount").innerHTML = skipVoteCount;
+    document.getElementById("results").innerHTML = "No votes casted yet";
+}

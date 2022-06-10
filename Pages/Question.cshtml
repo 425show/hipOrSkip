@@ -1,0 +1,22 @@
+﻿@page
+@model QuestionModel
+
+<div class="container">
+    <div class="row">
+        <h1><span>Create a new Question</span></h1>
+    </div>
+    <div class="row">
+        <div class="col-md-7 col-offset-3">
+            <div class="form-group">
+                <label for="questionInput">Enter the new question</label>
+                <input type="text" class="form-control" id="questionInput" aria-describedby="questionHelp" placeholder="Enter a question">
+                <small id="questionHelp" class="form-text text-muted">Be careful what you ask for!</small>
+            </div>
+            <button type="button" class="btn btn-primary" id="updateQuestionBtn">Submit</button>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/question.js"></script>

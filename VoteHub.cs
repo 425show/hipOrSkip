@@ -13,5 +13,10 @@ namespace HipOrSkip
         {
             await Clients.All.SendAsync("VoteUpdated", "skip");
         }
+
+        public async Task UpdateQuestion(string question)
+        {
+            await Clients.All.SendAsync("QuestionUpdated", question);
+        }
     }
 }
