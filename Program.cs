@@ -1,9 +1,15 @@
 using HipOrSkip;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.Identity.Web;
+using Microsoft.Identity.Web.UI;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddRazorPages();
+builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
+    .AddMicrosoftIdentityWebApp(builder.Configuration.GetSection("AzureAdB2C"));
+builder.Services.AddRazorPages()
+    .AddMicrosoftIdentityUI();
 builder.Services.AddSignalR();
 
 var app = builder.Build();
@@ -21,9 +27,11 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapRazorPages();
+app.MapControllers();
 app.MapHub<VoteHub>("/voteHub");
 
 app.Run();

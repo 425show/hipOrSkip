@@ -4,6 +4,7 @@
     ViewData["Title"] = "Hip or Skip - Let's play";
 }
 
+
 <div class="container">
     <div class="row">&nbsp;</div>
     <div class="row" style="margin-bottom:30px;">
@@ -11,34 +12,46 @@
             <h1><span id="question">Are you ready to decide if it's Hip or Skip?</span></h1>
         </div>
     </div>
-    <div class="row" style="margin-bottom:30px;">
-        <div class="col-3 text-center">
-            <input type="button" class="btn btn-primary" id="hipVoteBtn" value="Hip" />
+    @if (User.Identity?.IsAuthenticated == true)
+    {
+        <div class="row" style="margin-bottom:30px;">
+            <div class="col-12 text-center">
+                 
+            </div>
         </div>
-        <div class="col-7 text-center">
-            <span id="results"></span> 
+        <div class="row">
+            <div class="col-3">
+                <div class="counter-box colored">
+                    <i id="hipVoteBtn" class="btn fa fa-thumbs-o-up" href="#"></i>
+                    <span class="counter" id="hipVoteCount">0</span>
+                    <p>HIP!</p>
+                </div>
+            </div>
+            <div class="col-6 text-center">
+                <span style="font-size:65px" id="results"></span>
+            </div>
+            <div class="col-3">
+                <div class="counter-box colored">
+                    <i id="skipVoteBtn" class="btn fa fa-thumbs-o-down" href="#"></i>
+                    <span class="counter" id="skipVoteCount">0</span>
+                    <p>SKIP!</p>
+                </div>
+            </div>
         </div>
-        <div class="col-2">
-            <input type="button" class="btn btn-primary" id="skipVoteBtn" value="Skip" />
+    }
+    else
+    {
+        <div class="row" style="margin-bottom:30px;">
+            <div class="offset-3 col-6 text-center">
+                <h2>Make sure to login with your Discord account to be able to vote!</h2> 
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-3">
-            <div class="counter-box colored">
-			    <i class="fa fa-thumbs-o-up"></i>
-			    <span class="counter" id="hipVoteCount">0</span>
-			    <p>HIP!</p>
-		    </div>
+        <div class="row" style="margin-bottom:30px;">
+            <div class="offset-3 col-6 text-center">
+                <a class="btn btn-primary" asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignIn">Sign in</a>
+            </div>
         </div>
-        <div class="col-6"></div>
-        <div class="col-3">
-            <div class="counter-box colored">
-			    <i class="fa fa-thumbs-o-down"></i>
-			    <span class="counter" id="skipVoteCount">0</span>
-			    <p>SKIP!</p>
-		    </div>
-        </div>
-    </div>
+    }
 </div>
 <div class="row">
     <div class="col-12">
