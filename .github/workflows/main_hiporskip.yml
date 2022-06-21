@@ -9,16 +9,27 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+      id-token: write
+      contents: read
+
+env:
+  AZURE_WEBAPP_NAME: hipOrSkip    # set this to your application's name - test
+  AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
+  DOTNET_VERSION: '6.0.*'   
+
 jobs:
   build:
     runs-on: windows-latest
 
     steps:
       - uses: actions/checkout@v2
-
-      - name: Set up .NET Core
-        uses: actions/setup-dotnet@v1
+      - name: Set up .NET Core hipOrSkip app with Workload Identity Federation
+      - uses: azure/login@v1
         with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           dotnet-version: '6.0.x'
           include-prerelease: true
 
@@ -53,5 +64,4 @@ jobs:
         with:
           app-name: 'hipOrSkip'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_71C358FAF5544E21B14F2B2C4F16353C }}
           package: .
