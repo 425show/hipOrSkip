@@ -7,7 +7,6 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:
 
 permissions:
       id-token: write
@@ -24,6 +23,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      
       - name: Set up .NET Core hipOrSkip app with Workload Identity Federation
       - uses: azure/login@v1
         with:
