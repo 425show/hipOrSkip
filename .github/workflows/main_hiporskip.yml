@@ -16,15 +16,14 @@ permissions:
 env:
   AZURE_WEBAPP_NAME: hipOrSkip    # set this to your application's name - test
   AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
-  DOTNET_VERSION: '6.0.*'   
+  DOTNET_VERSION: '6.0.x'   
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
-      
       - name: OIDC Login to Azure Public Cloud
       - uses: azure/login@v1
         with:
@@ -32,7 +31,6 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           enable-AzPSSession: false
-          
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v1
         with:
